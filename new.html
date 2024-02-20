@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Achievements</title>
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: blue; /* Change background color to blue */
+            overflow-y: scroll; /* Add vertical scrollbar */
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff; /* White background */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Drop shadow */
+        }
+        h2 {
+            color: #333;
+        }
+        .achievements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-gap: 20px;
+            margin-top: 20px;
+        }
+        .achievement {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 8px; /* Rounded corners */
+            background-color: #fff; /* White background */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+        form {
+            margin-top: 40px;
+        }
+        input[type="text"],
+        input[type="date"] {
+            width: calc(100% - 20px); /* Take padding into account */
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc; /* Gray border */
+            border-radius: 4px; /* Rounded corners */
+            box-sizing: border-box; /* Include padding in width calculation */
+        }
+        input[type="submit"] {
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px; /* Rounded corners */
+            cursor: pointer;
+            transition: background-color 0.3s; /* Smooth transition */
+        }
+        input[type="submit"]:hover {
+            background-color: #555; /* Darker shade on hover */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>College Achievements</h1>
+</header>
+
+<div class="container">
+
+    <!-- Image Slider -->
+    <div class="item slider1">
+        <img src="http://leocollegebsw.com/LeoCollegeWebsiteAdminPanel/leoclgimages/leobannerimages/banner3.jpg" alt="">
+        <div class="carousel-caption slider-con">
+            <!--<h2>Admission open <span>2022</span></h2><br/>
+            <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form</p>
+            <a href='onlineadmission.php' class='bann-btn-1'>Online Admission</a><a href='contact-us.php' class='bann-btn-2'>Admission Enquiry</a>-->
+        </div>
+    </div>
+    <!-- End Image Slider -->
+
+    <h2>Recent Achievements</h2>
+    <div class="achievements">
+        <!-- Sample Achievement Card -->
+        <div class="achievement">
+            <h3>Event Name</h3>
+            <p>Description of the achievement...</p>
+            <p>Date: January 1, 2024</p>
+        </div>
+        <!-- Add more achievement cards dynamically here -->
+    </div>
+
+    <h2>Add New Achievement</h2>
+    <form id="achievementForm">
+        <input type="text" id="eventName" placeholder="Event Name" required>
+        <input type="text" id="description" placeholder="Description" required>
+        <input type="date" id="date" required>
+        <input type="submit" value="Add Achievement">
+    </form>
+
+</div>
+
+<script>
+    // JavaScript to handle form submission
+    document.getElementById("achievementForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        // Get form values
+        var eventName = document.getElementById("eventName").value;
+        var description = document.getElementById("description").value;
+        var date = document.getElementById("date").value;
+
+        // Create new achievement card
+        var newAchievement = document.createElement("div");
+        newAchievement.classList.add("achievement");
+        newAchievement.innerHTML = `
+            <h3>${eventName}</h3>
+            <p>${description}</p>
+            <p>Date: ${date}</p>
+        `;
+
+        // Append new achievement card to achievements section
+        var achievementsContainer = document.querySelector(".achievements");
+        achievementsContainer.appendChild(newAchievement);
+
+        // Clear form fields
+        document.getElementById("eventName").value = "";
+        document.getElementById("description").value = "";
+        document.getElementById("date").value = "";
+    });
+</script>
+
+</body>
+</html>
